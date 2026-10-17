@@ -41,8 +41,9 @@ include $(BUILD_SHARED_LIBRARY)
 
 # ============ Injector executable ============
 include $(CLEAR_VARS)
-LOCAL_MODULE           := libcatchmeifyoucan.so
+LOCAL_MODULE           := catchmeifyoucan
 LOCAL_SRC_FILES        := injector.c
-LOCAL_CFLAGS           := -O2 -fPIE -pie -fvisibility=hidden
+LOCAL_CFLAGS           := -O2 -fPIE -fvisibility=hidden
+LOCAL_LDFLAGS           := -pie
 LOCAL_LDLIBS           := -llog
 include $(BUILD_EXECUTABLE)
