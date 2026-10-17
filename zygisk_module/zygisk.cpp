@@ -92,15 +92,6 @@ public:
         } else {
             LOGE("=== hack() symbol not found: %s ===", dlerror());
         }
-
-        typedef void (*hack_fn)();
-        hack_fn hack = (hack_fn)dlsym(handle, "hack");
-        if (hack) {
-            LOGI("=== Calling hack() ===");
-            hack();
-        } else {
-            LOGE("=== hack() symbol not found: %s ===", dlerror());
-        }
     }
     
 private:
