@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <sys/uio.h>
 #include <sys/user.h>
+#include <sys/syscall.h>
 #include <elf.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -16,7 +17,6 @@
 #include <android/log.h>
 
 #if defined(__aarch64__)
-// ARM64 register access via ptrace
 #define PTRACE_GETREGSET 0x4204
 #define PTRACE_SETREGSET 0x4205
 #define NT_PRSTATUS 1
@@ -39,23 +39,23 @@ static int write_regs(int pid, struct user_pt_regs_local* regs) {
 }
 #endif
 
-// Read a value from remote process memory
+// ✅ แก้จุดที่ 1: ใช้ syscall() แทน process_vm_readv
 static int read_remote(int pid, uint64_t addr, void* buf, size_t len) {
     struct iovec local = { buf, len };
     struct iovec remote = { (void*)addr, len };
-    ssize_t r = process_vm_readv(pid, &local, 1, &remote, 1, 0);
+    ssize_t r = syscall(SYS_process_vm_readv, pid, &local, 1, &remote, 1, 0);
     return r == (ssize_t)len ? 0 : -1;
 }
 
-// Write a value to remote process memory
+// ✅ แก้จุดที่ 2: ใช้ syscall() แทน process_vm_writev
 static int write_remote(int pid, uint64_t addr, const void* buf, size_t len) {
     struct iovec local = { (void*)buf, len };
     struct iovec remote = { (void*)addr, len };
-    ssize_t r = process_vm_writev(pid, &local, 1, &remote, 1, 0);
+    ssize_t r = syscall(SYS_process_vm_writev, pid, &local, 1, &remote, 1, 0);
     return r == (ssize_t)len ? 0 : -1;
 }
 
-// Find base address of a module in target
+// (ส่วนที่เหลือเหมือนเดิมทุกอย่าง - find_module_base, find_dlopen, main)
 static uint64_t find_module_base(int pid, const char* name) {
     char path[64];
     snprintf(path, sizeof(path), "/proc/%d/maps", pid);
@@ -73,29 +73,19 @@ static uint64_t find_module_base(int pid, const char* name) {
     return base;
 }
 
-// Resolve dlopen in target's linker (bionic)
 static uint64_t find_dlopen(int pid) {
-    // dlopen is in libdl.so which is a stub that jumps into linker
-    // Simpler: find dlopen symbol in target via /proc/pid/maps + ELF parsing
-    // Fallback: use known offset pattern — find "dlopen" string in linker and compute
-    // FOR SIMPLICITY: use libdl.so's dlopen export address
     uint64_t libdl_base = find_module_base(pid, "libdl.so");
     if (!libdl_base) return 0;
-    // libdl.so's dlopen is a PLT stub that jumps to linker's __dl_dlopen
-    // That's actually the exported symbol, ptrace can call it
-    // Find it via parsing ELF header of libdl.so from remote memory
     Elf64_Ehdr ehdr;
     if (read_remote(pid, libdl_base, &ehdr, sizeof(ehdr)) != 0) return 0;
     if (memcmp(ehdr.e_ident, ELFMAG, 4) != 0) return 0;
 
-    // Read section headers
     Elf64_Shdr* shdrs = malloc(sizeof(Elf64_Shdr) * ehdr.e_shnum);
     if (!shdrs) return 0;
     if (read_remote(pid, libdl_base + ehdr.e_shoff, shdrs, sizeof(Elf64_Shdr) * ehdr.e_shnum) != 0) {
         free(shdrs); return 0;
     }
 
-    // Find .dynstr and .dynsym
     Elf64_Shdr *dynstr = NULL, *dynsym = NULL;
     for (int i = 0; i < ehdr.e_shnum; i++) {
         if (shdrs[i].sh_type == SHT_STRTAB && !dynstr) dynstr = &shdrs[i];
@@ -103,7 +93,6 @@ static uint64_t find_dlopen(int pid) {
     }
     if (!dynstr || !dynsym) { free(shdrs); return 0; }
 
-    // Read dynsym and dynstr
     Elf64_Sym* syms = malloc(dynsym->sh_size);
     char* strtab = malloc(dynstr->sh_size);
     if (!syms || !strtab) { free(syms); free(strtab); free(shdrs); return 0; }
@@ -148,7 +137,6 @@ int main(int argc, char** argv) {
     }
     regs = saved_regs;
 
-    // Find dlopen
     uint64_t dlopen_addr = find_dlopen(pid);
     if (!dlopen_addr) {
         __android_log_print(ANDROID_LOG_ERROR, "LionInjector", "dlopen not found");
@@ -157,15 +145,9 @@ int main(int argc, char** argv) {
     }
     __android_log_print(ANDROID_LOG_INFO, "LionInjector", "dlopen=0x%" PRIx64, dlopen_addr);
 
-    // Find mmap in target (for allocating string)
     uint64_t libc_base = find_module_base(pid, "libc.so");
-    // Simple: mmap via syscall — actually use existing SP to place string in stack
-    // Simpler: write path to end of target's stack (safe-ish, will restore after)
-    // Best: find mmap in libc
-
     uint64_t mmap_addr = 0;
     if (libc_base) {
-        // parse libc.so for mmap
         Elf64_Ehdr ehdr;
         if (read_remote(pid, libc_base, &ehdr, sizeof(ehdr)) == 0) {
             Elf64_Shdr* shdrs = malloc(sizeof(Elf64_Shdr) * ehdr.e_shnum);
@@ -203,15 +185,14 @@ int main(int argc, char** argv) {
     }
     __android_log_print(ANDROID_LOG_INFO, "LionInjector", "mmap=0x%" PRIx64, mmap_addr);
 
-    // Allocate 0x1000 in target via mmap(nullptr, 0x1000, PROT_RW, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0)
-    regs.regs[0] = 0;       // x0 = addr
-    regs.regs[1] = 0x1000;  // x1 = len
-    regs.regs[2] = 3;       // x2 = PROT_READ | PROT_WRITE
-    regs.regs[3] = 0x22;    // x3 = MAP_PRIVATE | MAP_ANONYMOUS
-    regs.regs[4] = (uint64_t)-1;  // x4 = fd
-    regs.regs[5] = 0;       // x5 = offset
+    regs.regs[0] = 0;
+    regs.regs[1] = 0x1000;
+    regs.regs[2] = 3;
+    regs.regs[3] = 0x22;
+    regs.regs[4] = (uint64_t)-1;
+    regs.regs[5] = 0;
     regs.pc = mmap_addr;
-    regs.regs[30] = 0;      // LR = 0 (intentional SIGSEGV to stop)
+    regs.regs[30] = 0;
     if (write_regs(pid, &regs) != 0) { perror("write regs"); ptrace(PTRACE_DETACH, pid, 0, 0); return 1; }
     ptrace(PTRACE_CONT, pid, 0, 0);
     int status;
@@ -222,7 +203,6 @@ int main(int argc, char** argv) {
     uint64_t str_addr = regs.regs[0];
     __android_log_print(ANDROID_LOG_INFO, "LionInjector", "str_addr=0x%" PRIx64, str_addr);
 
-    // Write payload path
     if (write_remote(pid, str_addr, payload, strlen(payload) + 1) != 0) {
         perror("write_remote path");
         write_regs(pid, &saved_regs);
@@ -230,10 +210,9 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    // Call dlopen(str_addr, RTLD_NOW)
     regs = saved_regs;
-    regs.regs[0] = str_addr;  // x0 = path
-    regs.regs[1] = 2;         // x1 = RTLD_NOW
+    regs.regs[0] = str_addr;
+    regs.regs[1] = 2;
     regs.pc = dlopen_addr;
     regs.regs[30] = 0;
     if (write_regs(pid, &regs) != 0) { perror("write regs 2"); ptrace(PTRACE_DETACH, pid, 0, 0); return 1; }
@@ -244,7 +223,6 @@ int main(int argc, char** argv) {
         __android_log_print(ANDROID_LOG_INFO, "LionInjector", "dlopen ret=0x%" PRIx64, regs.regs[0]);
     }
 
-    // Restore
     write_regs(pid, &saved_regs);
     ptrace(PTRACE_DETACH, pid, 0, 0);
 #endif
