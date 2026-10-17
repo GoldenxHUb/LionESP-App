@@ -53,9 +53,17 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        makabasa.setAction(Intent.ACTION_VIEW);
-        makabasa = getPackageManager().getLaunchIntentForPackage("com.dts.freefireth");
-        startActivity(makabasa);
+        try {
+            makabasa = getPackageManager().getLaunchIntentForPackage("com.dts.freefireth");
+            if (makabasa != null) {
+                makabasa.setAction(Intent.ACTION_VIEW);
+                startActivity(makabasa);
+            } else {
+                Toast.makeText(getApplicationContext(), "Free Fire not installed", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Cannot launch Free Fire: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
      if (InjectRoot("libmain.so")) {
      Toast.makeText(getApplicationContext(), "INJECT SUCCESS", Toast.LENGTH_LONG).show();
      DeletedCMODs("libmain.so");                                           
