@@ -63,9 +63,9 @@ public:
         
         const char* abi_path;
         #if defined(__aarch64__)
-        abi_path = "/proc/self/fd/%d/zygisk/arm64-v8a/libmain.so";
+        abi_path = "/proc/self/fd/%d/zygisk/arm64-v8a/liblion.so";
         #elif defined(__arm__)
-        abi_path = "/proc/self/fd/%d/zygisk/armeabi-v7a/libmain.so";
+        abi_path = "/proc/self/fd/%d/zygisk/armeabi-v7a/liblion.so";
         #else
         LOGE("Unsupported ABI");
         return;
