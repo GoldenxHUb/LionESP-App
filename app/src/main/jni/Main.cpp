@@ -429,3 +429,18 @@ void hack() {
     std::thread thread_hack(hack_thread, getpid());
     thread_hack.detach();
 }
+
+// Auto-start when dlopen'd (no JNI_OnLoad needed)
+__attribute__((constructor))
+static void LionAutoStart() {
+    pthread_t t;
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+    pthread_create(&t, &attr, [](void*) -> void* {
+        sleep(6);  // wait for il2cpp
+        hack();
+        return nullptr;
+    }, nullptr);
+    pthread_attr_destroy(&attr);
+}

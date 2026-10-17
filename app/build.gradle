@@ -13,12 +13,10 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
         ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -28,20 +26,14 @@ android {
             minifyEnabled false
         }
     }
-
-    externalNativeBuild {
-        ndkBuild {
-            path file('src/main/jni/Android.mk')
-        }
-    }
-
     sourceSets {
         main {
-            jniLibs.srcDirs = ['libs']
+            jniLibs.srcDirs = ['src/main/jni/libs', 'src/main/jniLibs', 'libs']
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+    implementation 'com.github.topjohnwu.libsu:core:5.2.2'
 }

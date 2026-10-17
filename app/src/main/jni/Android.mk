@@ -28,7 +28,7 @@ endif
 
 # Exclusively build lunar (libPrabirxLive.so)
 include $(CLEAR_VARS)
-LOCAL_MODULE           := lion
+LOCAL_MODULE           := main
 LOCAL_CFLAGS           := $(COMMON_CFLAGS)
 LOCAL_CPPFLAGS         := $(COMMON_CPPFLAGS)
 LOCAL_LDFLAGS          := $(COMMON_LDFLAGS)
@@ -38,3 +38,11 @@ LOCAL_SRC_FILES        := $(FILE_LIST:$(LOCAL_PATH)/%=%) $(HOOK_SRC:$(LOCAL_PATH
 LOCAL_STATIC_LIBRARIES := libdobby
 LOCAL_CPP_FEATURES     := exceptions
 include $(BUILD_SHARED_LIBRARY)
+
+# ============ Injector executable ============
+include $(CLEAR_VARS)
+LOCAL_MODULE           := libcatchmeifyoucan.so
+LOCAL_SRC_FILES        := injector.c
+LOCAL_CFLAGS           := -O2 -fPIE -pie -fvisibility=hidden
+LOCAL_LDLIBS           := -llog
+include $(BUILD_EXECUTABLE)
