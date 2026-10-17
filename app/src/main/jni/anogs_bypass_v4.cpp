@@ -507,6 +507,7 @@ static int patch_syscall_wrappers(uintptr_t base) {
     // scan the 4E0xxx block for SVC #0; patch the SVC itself to "mov x0,#0"
     // (keeps the wrapper callable, just makes the syscall a no-op that
     // returns 0 in x0 — safer than ret-ing the wrapper body)
+#if defined(__aarch64__)
     for (uintptr_t off = offsets::kSysRange_4E0xxx_start;
          off < offsets::kSysRange_4E0xxx_end; off += 4) {
         uint32_t insn = *(const uint32_t*)(base + off);
@@ -515,6 +516,7 @@ static int patch_syscall_wrappers(uintptr_t base) {
             if (patch_bytes((void*)(base + off), patch, 4)) patched++;
         }
     }
+#endif
     return patched;
 }
 
