@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
         }
      if (InjectRoot("libmain.so")) {
      Toast.makeText(getApplicationContext(), "INJECT SUCCESS", Toast.LENGTH_LONG).show();
-     DeletedCMODs("libmain.so");                                           
+// DeletedCMODs("libmain.so"); // disabled for debug
             }
         };    
     private boolean InjectRoot(String Lib) {

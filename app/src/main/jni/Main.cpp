@@ -327,10 +327,35 @@ typedef unsigned long DWORD;
 static uintptr_t libBase;
 
 inline void StartGUI() {
-    void *ptr_eglSwapBuffer = DobbySymbolResolver("/system/lib/libEGL.so", "eglSwapBuffers");
+    LOGD("=== StartGUI: looking for eglSwapBuffers ===");
+
+    void *ptr_eglSwapBuffer = nullptr;
+
+    // ลอง path ต่างๆ (Android 12+ ใช้ lib64)
+    const char* paths[] = {
+        "/system/lib64/libEGL.so",
+        "/system/lib/libEGL.so",
+        "/apex/com.android.runtime/lib64/libEGL.so",
+        "/apex/com.android.runtime/lib/libEGL.so",
+    };
+
+    for (const char* p : paths) {
+        ptr_eglSwapBuffer = DobbySymbolResolver(p, "eglSwapBuffers");
+        LOGD("=== %s: %p ===", p, ptr_eglSwapBuffer);
+        if (ptr_eglSwapBuffer) break;
+    }
+
+    // Fallback: หาจาก process memory
+    if (!ptr_eglSwapBuffer) {
+        ptr_eglSwapBuffer = DobbySymbolResolver("libEGL.so", "eglSwapBuffers");
+        LOGD("=== libEGL.so (proc): %p ===", ptr_eglSwapBuffer);
+    }
+
     if (ptr_eglSwapBuffer != nullptr) {
         DobbyHook((void *)ptr_eglSwapBuffer, (void *)hook_eglSwapBuffers, (void **)&old_eglSwapBuffers);
-        LOGD("GUI started successfully");
+        LOGD("=== GUI STARTED: hook installed at %p ===", ptr_eglSwapBuffer);
+    } else {
+        LOGE("=== GUI FAILED: eglSwapBuffers NOT FOUND ===");
     }
 }
 
@@ -345,17 +370,18 @@ bool hook_SendMessageToLobby(void* instance, int cmdType, uint32_t subCmdType, v
 }
 
 void hack_thread(pid_t pid) {
-    LOGD("Hack Thread initiated for PID: %i", pid);
+    LOGD("=== HACK THREAD STARTED pid=%d ===", pid);
 
     for (int i = 0; i < 10; i++) {
         il2cpp_base = get_module_base(pid, "libil2cpp.so");
+        LOGD("=== Attempt %d: il2cpp_base = 0x%lx ===", i, (unsigned long)il2cpp_base);
         if (il2cpp_base != 0) break;
         sleep(9);
     }
 
     if (il2cpp_base == 0) {
-        LOGE("libil2cpp.so not found in thread %d", pid);
-        std::terminate();
+        LOGE("=== libil2cpp.so NOT FOUND ===");
+        return;
     }
 
     LOGD("IL2CPP base address: 0x%" PRIxPTR, il2cpp_base);
@@ -425,22 +451,23 @@ void hack_thread(pid_t pid) {
 }
 
 void hack() {
-    LOGD("Inject Ok");
+    LOGD("=== HACK CALLED ===");
     std::thread thread_hack(hack_thread, getpid());
     thread_hack.detach();
+    LOGD("=== THREAD DETACHED ===");
 }
 
-// Auto-start when dlopen'd (no JNI_OnLoad needed)
-__attribute__((constructor))
-static void LionAutoStart() {
-    pthread_t t;
-    pthread_attr_t attr;
-    pthread_attr_init(&attr);
-    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-    pthread_create(&t, &attr, [](void*) -> void* {
-        sleep(6);  // wait for il2cpp
-        hack();
-        return nullptr;
-    }, nullptr);
-    pthread_attr_destroy(&attr);
-}
+// // Auto-start when dlopen'd (no JNI_OnLoad needed)
+// __attribute__((constructor))
+// static void LionAutoStart() {
+//     pthread_t t;
+//     pthread_attr_t attr;
+//     pthread_attr_init(&attr);
+//     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+//     pthread_create(&t, &attr, [](void*) -> void* {
+//         sleep(6);  // wait for il2cpp
+//         hack();
+//         return nullptr;
+//     }, nullptr);
+//     pthread_attr_destroy(&attr);
+// }
