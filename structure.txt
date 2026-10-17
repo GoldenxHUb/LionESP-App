@@ -1,0 +1,941 @@
+.
+├── app
+│   ├── .gitignore
+│   ├── .gradle
+│   │   ├── 8.9
+│   │   │   ├── checksums
+│   │   │   │   └── checksums.lock
+│   │   │   ├── dependencies-accessors
+│   │   │   │   └── gc.properties
+│   │   │   ├── expanded
+│   │   │   ├── fileChanges
+│   │   │   │   └── last-build.bin
+│   │   │   ├── fileHashes
+│   │   │   │   └── fileHashes.lock
+│   │   │   ├── gc.properties
+│   │   │   └── vcsMetadata
+│   │   ├── 9.2.0
+│   │   │   ├── checksums
+│   │   │   │   └── checksums.lock
+│   │   │   ├── expanded
+│   │   │   ├── fileChanges
+│   │   │   │   └── last-build.bin
+│   │   │   ├── fileHashes
+│   │   │   │   ├── fileHashes.bin
+│   │   │   │   └── fileHashes.lock
+│   │   │   ├── gc.properties
+│   │   │   └── vcsMetadata
+│   │   ├── buildOutputCleanup
+│   │   │   ├── buildOutputCleanup.lock
+│   │   │   └── cache.properties
+│   │   └── vcs-1
+│   │       └── gc.properties
+│   ├── app.iml
+│   ├── build
+│   │   ├── bin
+│   │   │   ├── aapt_rules.txt
+│   │   │   ├── app.apk
+│   │   │   ├── classes.dex
+│   │   │   ├── classesdebug
+│   │   │   │   ├── adrt
+│   │   │   │   │   └── ADRTMetadata.class
+│   │   │   │   └── com
+│   │   │   │       └── android
+│   │   │   │           └── support
+│   │   │   │               ├── BuildConfig$0$debug.class
+│   │   │   │               ├── BuildConfig.class
+│   │   │   │               ├── R$0$debug.class
+│   │   │   │               ├── R$attr$0$debug.class
+│   │   │   │               ├── R$attr.class
+│   │   │   │               ├── R$color$0$debug.class
+│   │   │   │               ├── R$color.class
+│   │   │   │               ├── R$drawable$0$debug.class
+│   │   │   │               ├── R$drawable.class
+│   │   │   │               ├── R$id$0$debug.class
+│   │   │   │               ├── R$id.class
+│   │   │   │               ├── R$layout$0$debug.class
+│   │   │   │               ├── R$layout.class
+│   │   │   │               ├── R$mipmap$0$debug.class
+│   │   │   │               ├── R$mipmap.class
+│   │   │   │               ├── R$string$0$debug.class
+│   │   │   │               ├── R$string.class
+│   │   │   │               └── R.class
+│   │   │   ├── classesrelease
+│   │   │   │   └── com
+│   │   │   │       └── android
+│   │   │   │           └── support
+│   │   │   │               ├── BuildConfig.class
+│   │   │   │               ├── BuildConfig.dex
+│   │   │   │               ├── R$attr.class
+│   │   │   │               ├── R$attr.dex
+│   │   │   │               ├── R$color.class
+│   │   │   │               ├── R$color.dex
+│   │   │   │               ├── R$drawable.class
+│   │   │   │               ├── R$drawable.dex
+│   │   │   │               ├── R$id.class
+│   │   │   │               ├── R$id.dex
+│   │   │   │               ├── R$layout.class
+│   │   │   │               ├── R$layout.dex
+│   │   │   │               ├── R$mipmap.class
+│   │   │   │               ├── R$mipmap.dex
+│   │   │   │               ├── R$string.class
+│   │   │   │               ├── R$string.dex
+│   │   │   │               ├── R.class
+│   │   │   │               └── R.dex
+│   │   │   ├── injected
+│   │   │   │   └── AndroidManifest.xml
+│   │   │   ├── intermediates
+│   │   │   │   ├── classesrelease
+│   │   │   │   │   └── com
+│   │   │   │   │       └── android
+│   │   │   │   │           └── support
+│   │   │   │   │               ├── BuildConfig.dex
+│   │   │   │   │               ├── R$attr.dex
+│   │   │   │   │               ├── R$color.dex
+│   │   │   │   │               ├── R$drawable.dex
+│   │   │   │   │               ├── R$id.dex
+│   │   │   │   │               ├── R$layout.dex
+│   │   │   │   │               ├── R$mipmap.dex
+│   │   │   │   │               ├── R$string.dex
+│   │   │   │   │               └── R.dex
+│   │   │   │   ├── dex
+│   │   │   │   │   └── classes.dex.zip
+│   │   │   │   └── jardex
+│   │   │   ├── jardex
+│   │   │   ├── res
+│   │   │   │   └── drawable
+│   │   │   │       └── logo.png
+│   │   │   └── resources.ap_
+│   │   └── gen
+│   │       └── com
+│   │           └── android
+│   │               └── support
+│   │                   ├── BuildConfig.java
+│   │                   └── R.java
+│   ├── build.gradle
+│   ├── proguard-rules.pro
+│   └── src
+│       └── main
+│           ├── AndroidManifest.xml
+│           ├── jni
+│           │   ├── Android.mk
+│           │   ├── Application.mk
+│           │   ├── Chams.h
+│           │   ├── Dobby
+│           │   │   ├── arm64-v8a
+│           │   │   │   └── libdobby.a
+│           │   │   ├── armeabi-v7a
+│           │   │   │   └── libdobby.a
+│           │   │   └── dobby.h
+│           │   ├── Icon
+│           │   │   ├── Font.h
+│           │   │   ├── Icon.h
+│           │   │   ├── Iconcpp.h
+│           │   │   └── OPPOSans-H.h
+│           │   ├── JNI&ZYG.txt
+│           │   ├── KittyMemory
+│           │   │   ├── KittyArm64.cpp
+│           │   │   ├── KittyArm64.h
+│           │   │   ├── KittyMemory.cpp
+│           │   │   ├── KittyMemory.h
+│           │   │   ├── KittyScanner.cpp
+│           │   │   ├── KittyScanner.h
+│           │   │   ├── KittyUtils.cpp
+│           │   │   ├── KittyUtils.h
+│           │   │   ├── MemoryBackup.cpp
+│           │   │   ├── MemoryBackup.h
+│           │   │   ├── MemoryPatch.cpp
+│           │   │   └── MemoryPatch.h
+│           │   ├── LAZ
+│           │   │   ├── Call_Me.h
+│           │   │   ├── Hacks
+│           │   │   │   ├── Call_Hacks.h
+│           │   │   │   ├── Init_Hacks.h
+│           │   │   │   └── StructSDK.h
+│           │   │   ├── IL2CppSDKGenerator
+│           │   │   │   ├── Il2Cpp.cpp
+│           │   │   │   └── Il2Cpp.h
+│           │   │   └── Tools
+│           │   │       ├── Call_Tools.h
+│           │   │       ├── Dobby
+│           │   │       │   ├── dobby.h
+│           │   │       │   └── libraries
+│           │   │       │       ├── arm64-v8a
+│           │   │       │       │   └── libdobby.a
+│           │   │       │       └── armeabi-v7a
+│           │   │       │           └── libdobby.a
+│           │   │       ├── ImGuiStuff.h
+│           │   │       ├── Jni_Stuff.h
+│           │   │       ├── StrEnc.h
+│           │   │       ├── Tools.cpp
+│           │   │       ├── Tools.h
+│           │   │       └── curl
+│           │   │           ├── curl-android-armeabi-v7a
+│           │   │           │   ├── include
+│           │   │           │   │   └── curl
+│           │   │           │   │       ├── curl.h
+│           │   │           │   │       ├── curlbuild.h
+│           │   │           │   │       ├── curlrules.h
+│           │   │           │   │       ├── curlver.h
+│           │   │           │   │       ├── easy.h
+│           │   │           │   │       ├── mprintf.h
+│           │   │           │   │       ├── multi.h
+│           │   │           │   │       ├── stdcheaders.h
+│           │   │           │   │       └── typecheck-gcc.h
+│           │   │           │   └── lib
+│           │   │           │       ├── libcurl.a
+│           │   │           │       ├── libcurl.la
+│           │   │           │       └── pkgconfig
+│           │   │           │           └── libcurl.pc
+│           │   │           ├── json.hpp
+│           │   │           └── openssl-android-armeabi-v7a
+│           │   │               ├── include
+│           │   │               │   └── openssl
+│           │   │               │       ├── aes.h
+│           │   │               │       ├── asn1.h
+│           │   │               │       ├── asn1_mac.h
+│           │   │               │       ├── asn1t.h
+│           │   │               │       ├── async.h
+│           │   │               │       ├── bio.h
+│           │   │               │       ├── blowfish.h
+│           │   │               │       ├── bn.h
+│           │   │               │       ├── buffer.h
+│           │   │               │       ├── camellia.h
+│           │   │               │       ├── cast.h
+│           │   │               │       ├── cmac.h
+│           │   │               │       ├── cms.h
+│           │   │               │       ├── comp.h
+│           │   │               │       ├── conf.h
+│           │   │               │       ├── conf_api.h
+│           │   │               │       ├── crypto.h
+│           │   │               │       ├── ct.h
+│           │   │               │       ├── des.h
+│           │   │               │       ├── dh.h
+│           │   │               │       ├── dsa.h
+│           │   │               │       ├── dtls1.h
+│           │   │               │       ├── e_os2.h
+│           │   │               │       ├── ebcdic.h
+│           │   │               │       ├── ec.h
+│           │   │               │       ├── ecdh.h
+│           │   │               │       ├── ecdsa.h
+│           │   │               │       ├── engine.h
+│           │   │               │       ├── err.h
+│           │   │               │       ├── evp.h
+│           │   │               │       ├── hmac.h
+│           │   │               │       ├── idea.h
+│           │   │               │       ├── kdf.h
+│           │   │               │       ├── lhash.h
+│           │   │               │       ├── md2.h
+│           │   │               │       ├── md4.h
+│           │   │               │       ├── md5.h
+│           │   │               │       ├── mdc2.h
+│           │   │               │       ├── modes.h
+│           │   │               │       ├── obj_mac.h
+│           │   │               │       ├── objects.h
+│           │   │               │       ├── ocsp.h
+│           │   │               │       ├── opensslconf.h
+│           │   │               │       ├── opensslv.h
+│           │   │               │       ├── ossl_typ.h
+│           │   │               │       ├── pem.h
+│           │   │               │       ├── pem2.h
+│           │   │               │       ├── pkcs12.h
+│           │   │               │       ├── pkcs7.h
+│           │   │               │       ├── rand.h
+│           │   │               │       ├── rc2.h
+│           │   │               │       ├── rc4.h
+│           │   │               │       ├── rc5.h
+│           │   │               │       ├── ripemd.h
+│           │   │               │       ├── rsa.h
+│           │   │               │       ├── safestack.h
+│           │   │               │       ├── seed.h
+│           │   │               │       ├── sha.h
+│           │   │               │       ├── srp.h
+│           │   │               │       ├── srtp.h
+│           │   │               │       ├── ssl.h
+│           │   │               │       ├── ssl2.h
+│           │   │               │       ├── ssl3.h
+│           │   │               │       ├── stack.h
+│           │   │               │       ├── symhacks.h
+│           │   │               │       ├── tls1.h
+│           │   │               │       ├── ts.h
+│           │   │               │       ├── txt_db.h
+│           │   │               │       ├── ui.h
+│           │   │               │       ├── whrlpool.h
+│           │   │               │       ├── x509.h
+│           │   │               │       ├── x509_vfy.h
+│           │   │               │       └── x509v3.h
+│           │   │               ├── lib
+│           │   │               │   ├── engines-1.1
+│           │   │               │   │   └── .rartemp1642365237458
+│           │   │               │   ├── libcrypto.a
+│           │   │               │   ├── libssl.a
+│           │   │               │   └── pkgconfig
+│           │   │               │       ├── libcrypto.pc
+│           │   │               │       ├── libssl.pc
+│           │   │               │       └── openssl.pc
+│           │   │               └── ssl
+│           │   │                   ├── certs
+│           │   │                   │   └── .rartemp1642365237459
+│           │   │                   ├── misc
+│           │   │                   │   ├── CA.pl
+│           │   │                   │   └── tsget
+│           │   │                   ├── openssl.cnf
+│           │   │                   ├── openssl.cnf.dist
+│           │   │                   └── private
+│           │   │                       └── .rartemp1642365237460
+│           │   ├── LazXcheat
+│           │   │   ├── Laz_Hooks.hpp
+│           │   │   ├── backends
+│           │   │   │   ├── imgui_impl_android.cpp
+│           │   │   │   ├── imgui_impl_android.h
+│           │   │   │   ├── imgui_impl_opengl3.cpp
+│           │   │   │   ├── imgui_impl_opengl3.h
+│           │   │   │   └── imgui_impl_opengl3_loader.h
+│           │   │   └── com
+│           │   │       └── android
+│           │   │           └── support
+│           │   │               ├── MainActivity.java
+│           │   │               ├── Prefs.java
+│           │   │               ├── Utils.java
+│           │   │               └── exec.java
+│           │   ├── Main.cpp
+│           │   ├── Struct
+│           │   │   ├── AimKill.h
+│           │   │   ├── Bools.h
+│           │   │   ├── Drawing.h
+│           │   │   ├── Global.h
+│           │   │   ├── Gui.hpp
+│           │   │   ├── MemoryPatches.cpp
+│           │   │   ├── MemoryPatches.h
+│           │   │   ├── Moco.h
+│           │   │   ├── Rect.h
+│           │   │   ├── TeleportRing.h
+│           │   │   ├── autohelp.h
+│           │   │   ├── lion_Class.h
+│           │   │   ├── lion_Hooks.h
+│           │   │   ├── main.h
+│           │   │   ├── memscan.cpp
+│           │   │   ├── memscan.h
+│           │   │   ├── obfuscate.h
+│           │   │   └── tools.hpp
+│           │   ├── Unity
+│           │   │   ├── Color.h
+│           │   │   ├── EspManager.h
+│           │   │   ├── Il2Cpp.cpp
+│           │   │   ├── Il2Cpp.h
+│           │   │   ├── MonoString.cpp
+│           │   │   ├── MonoString.h
+│           │   │   ├── Quaternion.h
+│           │   │   ├── Rect.h
+│           │   │   ├── Tools.cpp
+│           │   │   ├── Tools.h
+│           │   │   ├── Unity.h
+│           │   │   ├── VInt3.hpp
+│           │   │   ├── Vector2.h
+│           │   │   └── Vector3.hpp
+│           │   ├── exptime.h
+│           │   ├── fuck you prabir.h
+│           │   ├── imgui
+│           │   │   ├── Toggle.h
+│           │   │   ├── Verdana.h
+│           │   │   ├── fonts
+│           │   │   │   ├── FontAwesome6_regular.h
+│           │   │   │   ├── FontAwesome6_solid.h
+│           │   │   │   ├── GoogleSans.h
+│           │   │   │   ├── IconsFontAwesome6.h
+│           │   │   │   └── ShantellSans.h
+│           │   │   ├── imconfig.h
+│           │   │   ├── imgui.cpp
+│           │   │   ├── imgui.h
+│           │   │   ├── imgui_additional.h
+│           │   │   ├── imgui_demo.cpp
+│           │   │   ├── imgui_draw.cpp
+│           │   │   ├── imgui_impl_android.cpp
+│           │   │   ├── imgui_impl_android.h
+│           │   │   ├── imgui_impl_opengl3.cpp
+│           │   │   ├── imgui_impl_opengl3.h
+│           │   │   ├── imgui_impl_opengl3_loader.h
+│           │   │   ├── imgui_internal.h
+│           │   │   ├── imgui_tables.cpp
+│           │   │   ├── imgui_widgets.cpp
+│           │   │   ├── imstb_rectpack.h
+│           │   │   ├── imstb_textedit.h
+│           │   │   ├── imstb_truetype.h
+│           │   │   ├── stb_image.cpp
+│           │   │   └── stb_image.h
+│           │   ├── include
+│           │   │   ├── And64InlineHook
+│           │   │   │   ├── And64InlineHook.cpp
+│           │   │   │   └── And64InlineHook.hpp
+│           │   │   ├── Substrate
+│           │   │   │   ├── Buffer.hpp
+│           │   │   │   ├── CydiaSubstrate.h
+│           │   │   │   ├── SubstrateARM.hpp
+│           │   │   │   ├── SubstrateDebug.cpp
+│           │   │   │   ├── SubstrateDebug.hpp
+│           │   │   │   ├── SubstrateHook.cpp
+│           │   │   │   ├── SubstrateHook.h
+│           │   │   │   ├── SubstrateLog.hpp
+│           │   │   │   ├── SubstratePosixMemory.cpp
+│           │   │   │   ├── SubstrateX86.hpp
+│           │   │   │   ├── SymbolFinder.cpp
+│           │   │   │   ├── SymbolFinder.h
+│           │   │   │   ├── hde64.c
+│           │   │   │   ├── hde64.h
+│           │   │   │   └── table64.h
+│           │   │   └── xdl.h
+│           │   ├── obj
+│           │   │   └── local
+│           │   │       ├── arm64-v8a
+│           │   │       │   ├── libLazXCheat.so
+│           │   │       │   └── objs
+│           │   │       │       └── LazXCheat
+│           │   │       │           ├── KittyMemory
+│           │   │       │           │   ├── KittyArm64.o
+│           │   │       │           │   ├── KittyArm64.o.d
+│           │   │       │           │   ├── KittyMemory.o
+│           │   │       │           │   ├── KittyMemory.o.d
+│           │   │       │           │   ├── KittyScanner.o
+│           │   │       │           │   ├── KittyScanner.o.d
+│           │   │       │           │   ├── KittyUtils.o
+│           │   │       │           │   ├── KittyUtils.o.d
+│           │   │       │           │   ├── MemoryBackup.o
+│           │   │       │           │   ├── MemoryBackup.o.d
+│           │   │       │           │   ├── MemoryPatch.o
+│           │   │       │           │   └── MemoryPatch.o.d
+│           │   │       │           ├── LAZ
+│           │   │       │           │   └── IL2CppSDKGenerator
+│           │   │       │           │       ├── Il2Cpp.o
+│           │   │       │           │       └── Il2Cpp.o.d
+│           │   │       │           ├── Main.o
+│           │   │       │           ├── Main.o.d
+│           │   │       │           ├── Struct
+│           │   │       │           │   ├── MemoryPatches.o
+│           │   │       │           │   ├── MemoryPatches.o.d
+│           │   │       │           │   ├── memscan.o
+│           │   │       │           │   └── memscan.o.d
+│           │   │       │           ├── imgui
+│           │   │       │           │   ├── imgui.o
+│           │   │       │           │   ├── imgui.o.d
+│           │   │       │           │   ├── imgui_demo.o
+│           │   │       │           │   ├── imgui_demo.o.d
+│           │   │       │           │   ├── imgui_draw.o
+│           │   │       │           │   ├── imgui_draw.o.d
+│           │   │       │           │   ├── imgui_impl_android.o
+│           │   │       │           │   ├── imgui_impl_android.o.d
+│           │   │       │           │   ├── imgui_impl_opengl3.o
+│           │   │       │           │   ├── imgui_impl_opengl3.o.d
+│           │   │       │           │   ├── imgui_tables.o
+│           │   │       │           │   ├── imgui_tables.o.d
+│           │   │       │           │   ├── imgui_widgets.o
+│           │   │       │           │   └── imgui_widgets.o.d
+│           │   │       │           ├── include
+│           │   │       │           │   └── And64InlineHook
+│           │   │       │           │       ├── And64InlineHook.o
+│           │   │       │           │       └── And64InlineHook.o.d
+│           │   │       │           └── xdl
+│           │   │       │               ├── xdl.o
+│           │   │       │               ├── xdl.o.d
+│           │   │       │               ├── xdl_iterate.o
+│           │   │       │               ├── xdl_iterate.o.d
+│           │   │       │               ├── xdl_linker.o
+│           │   │       │               ├── xdl_linker.o.d
+│           │   │       │               ├── xdl_lzma.o
+│           │   │       │               ├── xdl_lzma.o.d
+│           │   │       │               ├── xdl_util.o
+│           │   │       │               └── xdl_util.o.d
+│           │   │       └── armeabi-v7a
+│           │   │           ├── libLazXCheat.so
+│           │   │           └── objs
+│           │   │               └── LazXCheat
+│           │   │                   ├── KittyMemory
+│           │   │                   │   ├── KittyArm64.o
+│           │   │                   │   ├── KittyArm64.o.d
+│           │   │                   │   ├── KittyMemory.o
+│           │   │                   │   ├── KittyMemory.o.d
+│           │   │                   │   ├── KittyScanner.o
+│           │   │                   │   ├── KittyScanner.o.d
+│           │   │                   │   ├── KittyUtils.o
+│           │   │                   │   ├── KittyUtils.o.d
+│           │   │                   │   ├── MemoryBackup.o
+│           │   │                   │   ├── MemoryBackup.o.d
+│           │   │                   │   ├── MemoryPatch.o
+│           │   │                   │   └── MemoryPatch.o.d
+│           │   │                   ├── LAZ
+│           │   │                   │   └── IL2CppSDKGenerator
+│           │   │                   │       ├── Il2Cpp.o
+│           │   │                   │       └── Il2Cpp.o.d
+│           │   │                   ├── Main.o
+│           │   │                   ├── Main.o.d
+│           │   │                   ├── Struct
+│           │   │                   │   ├── MemoryPatches.o
+│           │   │                   │   ├── MemoryPatches.o.d
+│           │   │                   │   ├── memscan.o
+│           │   │                   │   └── memscan.o.d
+│           │   │                   ├── imgui
+│           │   │                   │   ├── imgui.o
+│           │   │                   │   ├── imgui.o.d
+│           │   │                   │   ├── imgui_demo.o
+│           │   │                   │   ├── imgui_demo.o.d
+│           │   │                   │   ├── imgui_draw.o
+│           │   │                   │   ├── imgui_draw.o.d
+│           │   │                   │   ├── imgui_impl_android.o
+│           │   │                   │   ├── imgui_impl_android.o.d
+│           │   │                   │   ├── imgui_impl_opengl3.o
+│           │   │                   │   ├── imgui_impl_opengl3.o.d
+│           │   │                   │   ├── imgui_tables.o
+│           │   │                   │   ├── imgui_tables.o.d
+│           │   │                   │   ├── imgui_widgets.o
+│           │   │                   │   └── imgui_widgets.o.d
+│           │   │                   ├── include
+│           │   │                   │   └── Substrate
+│           │   │                   │       ├── SubstrateDebug.o
+│           │   │                   │       ├── SubstrateDebug.o.d
+│           │   │                   │       ├── SubstrateHook.o
+│           │   │                   │       ├── SubstrateHook.o.d
+│           │   │                   │       ├── SubstratePosixMemory.o
+│           │   │                   │       ├── SubstratePosixMemory.o.d
+│           │   │                   │       ├── SymbolFinder.o
+│           │   │                   │       ├── SymbolFinder.o.d
+│           │   │                   │       ├── hde64.o
+│           │   │                   │       └── hde64.o.d
+│           │   │                   └── xdl
+│           │   │                       ├── xdl.o
+│           │   │                       ├── xdl.o.d
+│           │   │                       ├── xdl_iterate.o
+│           │   │                       ├── xdl_iterate.o.d
+│           │   │                       ├── xdl_linker.o
+│           │   │                       ├── xdl_linker.o.d
+│           │   │                       ├── xdl_lzma.o
+│           │   │                       ├── xdl_lzma.o.d
+│           │   │                       ├── xdl_util.o
+│           │   │                       └── xdl_util.o.d
+│           │   ├── stb
+│           │   │   ├── lion.h
+│           │   │   └── stb_image.h
+│           │   ├── xdl
+│           │   │   ├── include
+│           │   │   │   └── xdl.h
+│           │   │   ├── xdl.c
+│           │   │   ├── xdl_iterate.c
+│           │   │   ├── xdl_iterate.h
+│           │   │   ├── xdl_linker.c
+│           │   │   ├── xdl_linker.h
+│           │   │   ├── xdl_lzma.c
+│           │   │   ├── xdl_lzma.h
+│           │   │   ├── xdl_util.c
+│           │   │   └── xdl_util.h
+│           │   └── zygisk.hpp
+│           ├── jniLibs
+│           │   ├── arm64-v8a
+│           │   │   └── liblion.so
+│           │   └── armeabi-v7a
+│           │       └── liblion.so
+│           ├── obj
+│           │   └── local
+│           │       ├── arm64-v8a
+│           │       │   ├── libPrabirxLive.so
+│           │       │   ├── libleomodzdev.so
+│           │       │   ├── liblion.so
+│           │       │   └── objs
+│           │       │       ├── PrabirxLive
+│           │       │       │   ├── KittyMemory
+│           │       │       │   │   ├── KittyArm64.o
+│           │       │       │   │   ├── KittyArm64.o.d
+│           │       │       │   │   ├── KittyMemory.o
+│           │       │       │   │   ├── KittyMemory.o.d
+│           │       │       │   │   ├── KittyScanner.o
+│           │       │       │   │   ├── KittyScanner.o.d
+│           │       │       │   │   ├── KittyUtils.o
+│           │       │       │   │   ├── KittyUtils.o.d
+│           │       │       │   │   ├── MemoryBackup.o
+│           │       │       │   │   ├── MemoryBackup.o.d
+│           │       │       │   │   ├── MemoryPatch.o
+│           │       │       │   │   └── MemoryPatch.o.d
+│           │       │       │   ├── LAZ
+│           │       │       │   │   └── IL2CppSDKGenerator
+│           │       │       │   │       ├── Il2Cpp.o
+│           │       │       │   │       └── Il2Cpp.o.d
+│           │       │       │   ├── Main.o
+│           │       │       │   ├── Main.o.d
+│           │       │       │   ├── Struct
+│           │       │       │   │   ├── MemoryPatches.o
+│           │       │       │   │   ├── MemoryPatches.o.d
+│           │       │       │   │   ├── memscan.o
+│           │       │       │   │   └── memscan.o.d
+│           │       │       │   ├── imgui
+│           │       │       │   │   ├── imgui.o
+│           │       │       │   │   ├── imgui.o.d
+│           │       │       │   │   ├── imgui_demo.o
+│           │       │       │   │   ├── imgui_demo.o.d
+│           │       │       │   │   ├── imgui_draw.o
+│           │       │       │   │   ├── imgui_draw.o.d
+│           │       │       │   │   ├── imgui_impl_android.o
+│           │       │       │   │   ├── imgui_impl_android.o.d
+│           │       │       │   │   ├── imgui_impl_opengl3.o
+│           │       │       │   │   ├── imgui_impl_opengl3.o.d
+│           │       │       │   │   ├── imgui_tables.o
+│           │       │       │   │   ├── imgui_tables.o.d
+│           │       │       │   │   ├── imgui_widgets.o
+│           │       │       │   │   ├── imgui_widgets.o.d
+│           │       │       │   │   ├── stb_image.o
+│           │       │       │   │   └── stb_image.o.d
+│           │       │       │   ├── include
+│           │       │       │   │   └── And64InlineHook
+│           │       │       │   │       ├── And64InlineHook.o
+│           │       │       │   │       └── And64InlineHook.o.d
+│           │       │       │   └── xdl
+│           │       │       │       ├── xdl.o
+│           │       │       │       ├── xdl.o.d
+│           │       │       │       ├── xdl_iterate.o
+│           │       │       │       ├── xdl_iterate.o.d
+│           │       │       │       ├── xdl_linker.o
+│           │       │       │       ├── xdl_linker.o.d
+│           │       │       │       ├── xdl_lzma.o
+│           │       │       │       ├── xdl_lzma.o.d
+│           │       │       │       ├── xdl_util.o
+│           │       │       │       └── xdl_util.o.d
+│           │       │       ├── leomodzdev
+│           │       │       │   ├── KittyMemory
+│           │       │       │   │   ├── KittyArm64.o
+│           │       │       │   │   ├── KittyArm64.o.d
+│           │       │       │   │   ├── KittyMemory.o
+│           │       │       │   │   ├── KittyMemory.o.d
+│           │       │       │   │   ├── KittyScanner.o
+│           │       │       │   │   ├── KittyScanner.o.d
+│           │       │       │   │   ├── KittyUtils.o
+│           │       │       │   │   ├── KittyUtils.o.d
+│           │       │       │   │   ├── MemoryBackup.o
+│           │       │       │   │   ├── MemoryBackup.o.d
+│           │       │       │   │   ├── MemoryPatch.o
+│           │       │       │   │   └── MemoryPatch.o.d
+│           │       │       │   ├── LAZ
+│           │       │       │   │   └── IL2CppSDKGenerator
+│           │       │       │   │       ├── Il2Cpp.o
+│           │       │       │   │       └── Il2Cpp.o.d
+│           │       │       │   ├── Main-fb0007f9.o.tmp
+│           │       │       │   ├── Main.o
+│           │       │       │   ├── Main.o.d
+│           │       │       │   ├── Struct
+│           │       │       │   │   ├── MemoryPatches.o
+│           │       │       │   │   ├── MemoryPatches.o.d
+│           │       │       │   │   ├── memscan.o
+│           │       │       │   │   └── memscan.o.d
+│           │       │       │   ├── imgui
+│           │       │       │   │   ├── imgui.o
+│           │       │       │   │   ├── imgui.o.d
+│           │       │       │   │   ├── imgui_demo.o
+│           │       │       │   │   ├── imgui_demo.o.d
+│           │       │       │   │   ├── imgui_draw.o
+│           │       │       │   │   ├── imgui_draw.o.d
+│           │       │       │   │   ├── imgui_impl_android.o
+│           │       │       │   │   ├── imgui_impl_android.o.d
+│           │       │       │   │   ├── imgui_impl_opengl3.o
+│           │       │       │   │   ├── imgui_impl_opengl3.o.d
+│           │       │       │   │   ├── imgui_tables.o
+│           │       │       │   │   ├── imgui_tables.o.d
+│           │       │       │   │   ├── imgui_widgets.o
+│           │       │       │   │   ├── imgui_widgets.o.d
+│           │       │       │   │   ├── stb_image.o
+│           │       │       │   │   └── stb_image.o.d
+│           │       │       │   ├── include
+│           │       │       │   │   └── And64InlineHook
+│           │       │       │   │       ├── And64InlineHook.o
+│           │       │       │   │       └── And64InlineHook.o.d
+│           │       │       │   └── xdl
+│           │       │       │       ├── xdl.o
+│           │       │       │       ├── xdl.o.d
+│           │       │       │       ├── xdl_iterate.o
+│           │       │       │       ├── xdl_iterate.o.d
+│           │       │       │       ├── xdl_linker.o
+│           │       │       │       ├── xdl_linker.o.d
+│           │       │       │       ├── xdl_lzma.o
+│           │       │       │       ├── xdl_lzma.o.d
+│           │       │       │       ├── xdl_util.o
+│           │       │       │       └── xdl_util.o.d
+│           │       │       └── lion
+│           │       │           ├── KittyMemory
+│           │       │           │   ├── KittyArm64.o
+│           │       │           │   ├── KittyArm64.o.d
+│           │       │           │   ├── KittyMemory.o
+│           │       │           │   ├── KittyMemory.o.d
+│           │       │           │   ├── KittyScanner.o
+│           │       │           │   ├── KittyScanner.o.d
+│           │       │           │   ├── KittyUtils.o
+│           │       │           │   ├── KittyUtils.o.d
+│           │       │           │   ├── MemoryBackup.o
+│           │       │           │   ├── MemoryBackup.o.d
+│           │       │           │   ├── MemoryPatch.o
+│           │       │           │   └── MemoryPatch.o.d
+│           │       │           ├── LAZ
+│           │       │           │   └── IL2CppSDKGenerator
+│           │       │           │       ├── Il2Cpp.o
+│           │       │           │       └── Il2Cpp.o.d
+│           │       │           ├── Main-e2883845.o.tmp
+│           │       │           ├── Main.o
+│           │       │           ├── Main.o.d
+│           │       │           ├── Struct
+│           │       │           │   ├── MemoryPatches.o
+│           │       │           │   ├── MemoryPatches.o.d
+│           │       │           │   ├── memscan.o
+│           │       │           │   └── memscan.o.d
+│           │       │           ├── imgui
+│           │       │           │   ├── imgui.o
+│           │       │           │   ├── imgui.o.d
+│           │       │           │   ├── imgui_demo.o
+│           │       │           │   ├── imgui_demo.o.d
+│           │       │           │   ├── imgui_draw.o
+│           │       │           │   ├── imgui_draw.o.d
+│           │       │           │   ├── imgui_impl_android.o
+│           │       │           │   ├── imgui_impl_android.o.d
+│           │       │           │   ├── imgui_impl_opengl3.o
+│           │       │           │   ├── imgui_impl_opengl3.o.d
+│           │       │           │   ├── imgui_tables.o
+│           │       │           │   ├── imgui_tables.o.d
+│           │       │           │   ├── imgui_widgets.o
+│           │       │           │   ├── imgui_widgets.o.d
+│           │       │           │   ├── stb_image.o
+│           │       │           │   └── stb_image.o.d
+│           │       │           ├── include
+│           │       │           │   └── And64InlineHook
+│           │       │           │       ├── And64InlineHook.o
+│           │       │           │       └── And64InlineHook.o.d
+│           │       │           └── xdl
+│           │       │               ├── xdl.o
+│           │       │               ├── xdl.o.d
+│           │       │               ├── xdl_iterate.o
+│           │       │               ├── xdl_iterate.o.d
+│           │       │               ├── xdl_linker.o
+│           │       │               ├── xdl_linker.o.d
+│           │       │               ├── xdl_lzma.o
+│           │       │               ├── xdl_lzma.o.d
+│           │       │               ├── xdl_util.o
+│           │       │               └── xdl_util.o.d
+│           │       └── armeabi-v7a
+│           │           ├── libPrabirxLive.so
+│           │           ├── libleomodzdev.so
+│           │           ├── liblion.so
+│           │           └── objs
+│           │               ├── PrabirxLive
+│           │               │   ├── KittyMemory
+│           │               │   │   ├── KittyArm64.o
+│           │               │   │   ├── KittyArm64.o.d
+│           │               │   │   ├── KittyMemory.o
+│           │               │   │   ├── KittyMemory.o.d
+│           │               │   │   ├── KittyScanner.o
+│           │               │   │   ├── KittyScanner.o.d
+│           │               │   │   ├── KittyUtils.o
+│           │               │   │   ├── KittyUtils.o.d
+│           │               │   │   ├── MemoryBackup.o
+│           │               │   │   ├── MemoryBackup.o.d
+│           │               │   │   ├── MemoryPatch.o
+│           │               │   │   └── MemoryPatch.o.d
+│           │               │   ├── LAZ
+│           │               │   │   └── IL2CppSDKGenerator
+│           │               │   │       ├── Il2Cpp.o
+│           │               │   │       └── Il2Cpp.o.d
+│           │               │   ├── Main.o
+│           │               │   ├── Main.o.d
+│           │               │   ├── Struct
+│           │               │   │   ├── MemoryPatches.o
+│           │               │   │   ├── MemoryPatches.o.d
+│           │               │   │   ├── memscan.o
+│           │               │   │   └── memscan.o.d
+│           │               │   ├── imgui
+│           │               │   │   ├── imgui.o
+│           │               │   │   ├── imgui.o.d
+│           │               │   │   ├── imgui_demo.o
+│           │               │   │   ├── imgui_demo.o.d
+│           │               │   │   ├── imgui_draw-ed94bf4e.o.tmp
+│           │               │   │   ├── imgui_draw.o
+│           │               │   │   ├── imgui_draw.o.d
+│           │               │   │   ├── imgui_impl_android.o
+│           │               │   │   ├── imgui_impl_android.o.d
+│           │               │   │   ├── imgui_impl_opengl3.o
+│           │               │   │   ├── imgui_impl_opengl3.o.d
+│           │               │   │   ├── imgui_tables.o
+│           │               │   │   ├── imgui_tables.o.d
+│           │               │   │   ├── imgui_widgets.o
+│           │               │   │   ├── imgui_widgets.o.d
+│           │               │   │   ├── stb_image.o
+│           │               │   │   └── stb_image.o.d
+│           │               │   ├── include
+│           │               │   │   └── Substrate
+│           │               │   │       ├── SubstrateDebug.o
+│           │               │   │       ├── SubstrateDebug.o.d
+│           │               │   │       ├── SubstrateHook.o
+│           │               │   │       ├── SubstrateHook.o.d
+│           │               │   │       ├── SubstratePosixMemory.o
+│           │               │   │       ├── SubstratePosixMemory.o.d
+│           │               │   │       ├── SymbolFinder.o
+│           │               │   │       ├── SymbolFinder.o.d
+│           │               │   │       ├── hde64.o
+│           │               │   │       └── hde64.o.d
+│           │               │   └── xdl
+│           │               │       ├── xdl.o
+│           │               │       ├── xdl.o.d
+│           │               │       ├── xdl_iterate.o
+│           │               │       ├── xdl_iterate.o.d
+│           │               │       ├── xdl_linker.o
+│           │               │       ├── xdl_linker.o.d
+│           │               │       ├── xdl_lzma.o
+│           │               │       ├── xdl_lzma.o.d
+│           │               │       ├── xdl_util.o
+│           │               │       └── xdl_util.o.d
+│           │               ├── leomodzdev
+│           │               │   ├── KittyMemory
+│           │               │   │   ├── KittyArm64.o
+│           │               │   │   ├── KittyArm64.o.d
+│           │               │   │   ├── KittyMemory.o
+│           │               │   │   ├── KittyMemory.o.d
+│           │               │   │   ├── KittyScanner.o
+│           │               │   │   ├── KittyScanner.o.d
+│           │               │   │   ├── KittyUtils.o
+│           │               │   │   ├── KittyUtils.o.d
+│           │               │   │   ├── MemoryBackup.o
+│           │               │   │   ├── MemoryBackup.o.d
+│           │               │   │   ├── MemoryPatch.o
+│           │               │   │   └── MemoryPatch.o.d
+│           │               │   ├── LAZ
+│           │               │   │   └── IL2CppSDKGenerator
+│           │               │   │       ├── Il2Cpp.o
+│           │               │   │       └── Il2Cpp.o.d
+│           │               │   ├── Main-f9155479.o.tmp
+│           │               │   ├── Main.o
+│           │               │   ├── Main.o.d
+│           │               │   ├── Struct
+│           │               │   │   ├── MemoryPatches.o
+│           │               │   │   ├── MemoryPatches.o.d
+│           │               │   │   ├── memscan.o
+│           │               │   │   └── memscan.o.d
+│           │               │   ├── imgui
+│           │               │   │   ├── imgui.o
+│           │               │   │   ├── imgui.o.d
+│           │               │   │   ├── imgui_demo.o
+│           │               │   │   ├── imgui_demo.o.d
+│           │               │   │   ├── imgui_draw.o
+│           │               │   │   ├── imgui_draw.o.d
+│           │               │   │   ├── imgui_impl_android.o
+│           │               │   │   ├── imgui_impl_android.o.d
+│           │               │   │   ├── imgui_impl_opengl3.o
+│           │               │   │   ├── imgui_impl_opengl3.o.d
+│           │               │   │   ├── imgui_tables.o
+│           │               │   │   ├── imgui_tables.o.d
+│           │               │   │   ├── imgui_widgets.o
+│           │               │   │   ├── imgui_widgets.o.d
+│           │               │   │   ├── stb_image.o
+│           │               │   │   └── stb_image.o.d
+│           │               │   ├── include
+│           │               │   │   └── Substrate
+│           │               │   │       ├── SubstrateDebug.o
+│           │               │   │       ├── SubstrateDebug.o.d
+│           │               │   │       ├── SubstrateHook.o
+│           │               │   │       ├── SubstrateHook.o.d
+│           │               │   │       ├── SubstratePosixMemory.o
+│           │               │   │       ├── SubstratePosixMemory.o.d
+│           │               │   │       ├── SymbolFinder.o
+│           │               │   │       ├── SymbolFinder.o.d
+│           │               │   │       ├── hde64.o
+│           │               │   │       └── hde64.o.d
+│           │               │   └── xdl
+│           │               │       ├── xdl.o
+│           │               │       ├── xdl.o.d
+│           │               │       ├── xdl_iterate.o
+│           │               │       ├── xdl_iterate.o.d
+│           │               │       ├── xdl_linker.o
+│           │               │       ├── xdl_linker.o.d
+│           │               │       ├── xdl_lzma.o
+│           │               │       ├── xdl_lzma.o.d
+│           │               │       ├── xdl_util.o
+│           │               │       └── xdl_util.o.d
+│           │               └── lion
+│           │                   ├── KittyMemory
+│           │                   │   ├── KittyArm64.o
+│           │                   │   ├── KittyArm64.o.d
+│           │                   │   ├── KittyMemory.o
+│           │                   │   ├── KittyMemory.o.d
+│           │                   │   ├── KittyScanner.o
+│           │                   │   ├── KittyScanner.o.d
+│           │                   │   ├── KittyUtils.o
+│           │                   │   ├── KittyUtils.o.d
+│           │                   │   ├── MemoryBackup.o
+│           │                   │   ├── MemoryBackup.o.d
+│           │                   │   ├── MemoryPatch.o
+│           │                   │   └── MemoryPatch.o.d
+│           │                   ├── LAZ
+│           │                   │   └── IL2CppSDKGenerator
+│           │                   │       ├── Il2Cpp.o
+│           │                   │       └── Il2Cpp.o.d
+│           │                   ├── Main.o
+│           │                   ├── Main.o.d
+│           │                   ├── Struct
+│           │                   │   ├── MemoryPatches.o
+│           │                   │   ├── MemoryPatches.o.d
+│           │                   │   ├── memscan.o
+│           │                   │   └── memscan.o.d
+│           │                   ├── imgui
+│           │                   │   ├── imgui-3c3b14d8.o.tmp
+│           │                   │   ├── imgui.o
+│           │                   │   ├── imgui.o.d
+│           │                   │   ├── imgui_demo.o
+│           │                   │   ├── imgui_demo.o.d
+│           │                   │   ├── imgui_draw.o
+│           │                   │   ├── imgui_draw.o.d
+│           │                   │   ├── imgui_impl_android.o
+│           │                   │   ├── imgui_impl_android.o.d
+│           │                   │   ├── imgui_impl_opengl3.o
+│           │                   │   ├── imgui_impl_opengl3.o.d
+│           │                   │   ├── imgui_tables.o
+│           │                   │   ├── imgui_tables.o.d
+│           │                   │   ├── imgui_widgets.o
+│           │                   │   ├── imgui_widgets.o.d
+│           │                   │   ├── stb_image.o
+│           │                   │   └── stb_image.o.d
+│           │                   ├── include
+│           │                   │   └── Substrate
+│           │                   │       ├── SubstrateDebug.o
+│           │                   │       ├── SubstrateDebug.o.d
+│           │                   │       ├── SubstrateHook.o
+│           │                   │       ├── SubstrateHook.o.d
+│           │                   │       ├── SubstratePosixMemory.o
+│           │                   │       ├── SubstratePosixMemory.o.d
+│           │                   │       ├── SymbolFinder.o
+│           │                   │       ├── SymbolFinder.o.d
+│           │                   │       ├── hde64.o
+│           │                   │       └── hde64.o.d
+│           │                   └── xdl
+│           │                       ├── xdl.o
+│           │                       ├── xdl.o.d
+│           │                       ├── xdl_iterate.o
+│           │                       ├── xdl_iterate.o.d
+│           │                       ├── xdl_linker.o
+│           │                       ├── xdl_linker.o.d
+│           │                       ├── xdl_lzma.o
+│           │                       ├── xdl_lzma.o.d
+│           │                       ├── xdl_util.o
+│           │                       └── xdl_util.o.d
+│           └── res
+│               ├── drawable
+│               │   ├── ic_launcher_background.xml
+│               │   ├── ic_launcher_foreground.xml
+│               │   └── logo.png
+│               ├── drawable-v24
+│               │   └── ic_launcher_foreground.xml
+│               ├── layout
+│               │   └── activity_main.xml
+│               ├── mipmap-anydpi-v26
+│               │   ├── ic_launcher.xml
+│               │   └── ic_launcher_round.xml
+│               ├── mipmap-hdpi
+│               ├── mipmap-mdpi
+│               ├── mipmap-xhdpi
+│               ├── mipmap-xxhdpi
+│               ├── mipmap-xxxhdpi
+│               └── values
+│                   ├── colors.xml
+│                   ├── ic_launcher_background.xml
+│                   ├── strings.xml
+│                   └── styles.xml
+└── structure.txt
+
+189 directories, 750 files
