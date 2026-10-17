@@ -1,1 +1,3 @@
 *.bak
+apk-debug/
+*.apk
