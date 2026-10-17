@@ -23,7 +23,7 @@
 
 // ZYGISK CONFIG
 void (*OpenURL)(String *url);
-void hack();
+extern "C" void hack();
 
 extern JavaVM* jvm;
 extern JNIEnv* genv;
