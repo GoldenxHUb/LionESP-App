@@ -450,7 +450,7 @@ void hack_thread(pid_t pid) {
     }
 }
 
-void hack() {
+extern "C" void hack() {
     LOGD("=== HACK CALLED ===");
     std::thread thread_hack(hack_thread, getpid());
     thread_hack.detach();

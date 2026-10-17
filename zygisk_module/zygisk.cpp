@@ -7,7 +7,7 @@
 #include "zygisk.hpp"
 
 #define LOG_TAG "LionZygisk"
-#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
 using zygisk::Api;
@@ -22,11 +22,13 @@ static const char* TARGET_PKGS[] = {
 class LionModule : public zygisk::ModuleBase {
 public:
     void onLoad(Api* api, JNIEnv* env) override {
+        LOGI("=== LionZygisk: onLoad ===");
         this->api_ = api;
         this->env_ = env;
     }
     
     void preAppSpecialize(AppSpecializeArgs* args) override {
+        LOGI("=== LionZygisk: preAppSpecialize ===");
         is_target_ = false;
         if (!args->nice_name) return;
         
@@ -35,7 +37,7 @@ public:
             for (int i = 0; TARGET_PKGS[i]; i++) {
                 if (strcmp(process, TARGET_PKGS[i]) == 0) {
                     is_target_ = true;
-                    LOGD("Target detected: %s", process);
+                    LOGI("Target detected: %s", process);
                     break;
                 }
             }
@@ -48,9 +50,10 @@ public:
     }
     
     void postAppSpecialize(const AppSpecializeArgs* args) override {
+        LOGI("=== LionZygisk: postAppSpecialize is_target=%d ===", is_target_);
         if (!is_target_) return;
         
-        LOGD("=== LionZygisk: Injecting libmain.so ===");
+        LOGI("=== LionZygisk: Injecting libmain.so ===");
         
         int dir_fd = api_->getModuleDir();
         if (dir_fd < 0) {
@@ -71,7 +74,7 @@ public:
         char path[256];
         snprintf(path, sizeof(path), abi_path, dir_fd);
         
-        LOGD("Loading: %s", path);
+        LOGI("Loading: %s", path);
         
         void* handle = dlopen(path, RTLD_NOW);
         if (!handle) {
@@ -79,7 +82,25 @@ public:
             return;
         }
         
-        LOGD("=== libmain.so loaded successfully ===");
+        LOGI("=== libmain.so loaded successfully ===");
+
+        typedef void (*hack_fn)();
+        hack_fn hack = (hack_fn)dlsym(handle, "hack");
+        if (hack) {
+            LOGI("=== Calling hack() ===");
+            hack();
+        } else {
+            LOGE("=== hack() symbol not found: %s ===", dlerror());
+        }
+
+        typedef void (*hack_fn)();
+        hack_fn hack = (hack_fn)dlsym(handle, "hack");
+        if (hack) {
+            LOGI("=== Calling hack() ===");
+            hack();
+        } else {
+            LOGE("=== hack() symbol not found: %s ===", dlerror());
+        }
     }
     
 private:
