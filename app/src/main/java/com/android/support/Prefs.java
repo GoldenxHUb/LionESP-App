@@ -1,4 +1,4 @@
-package com.android.support;
+package com.goldenx.lionesp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
