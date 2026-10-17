@@ -31,8 +31,40 @@ jobs:
       - name: Build APK
         run: gradle assembleDebug --no-daemon --stacktrace
 
+      - name: Build Zygisk module
+        run: |
+          echo "=== Build libzygisk.so ==="
+          cd zygisk_module
+          $NDK/ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=Android.mk NDK_APPLICATION_MK=Application.mk
+          
+          echo "=== Copy libzygisk.so ==="
+          cp libs/arm64-v8a/libzygisk.so zygisk/arm64-v8a/zygisk.so
+          cp libs/armeabi-v7a/libzygisk.so zygisk/armeabi-v7a/zygisk.so
+          rm -rf libs obj
+          
+          echo "=== Extract libmain.so from APK ==="
+          cd ..
+          rm -rf /tmp/extract
+          mkdir -p /tmp/extract
+          cd /tmp/extract
+          unzip $GITHUB_WORKSPACE/app/build/outputs/apk/debug/app-debug.apk "lib/arm64-v8a/libmain.so" "lib/armeabi-v7a/libmain.so"
+          cp lib/arm64-v8a/libmain.so $GITHUB_WORKSPACE/zygisk_module/zygisk/arm64-v8a/libmain.so
+          cp lib/armeabi-v7a/libmain.so $GITHUB_WORKSPACE/zygisk_module/zygisk/armeabi-v7a/libmain.so
+          
+          echo "=== Zip Magisk module ==="
+          cd $GITHUB_WORKSPACE/zygisk_module
+          zip -r $GITHUB_WORKSPACE/lionesp_zygisk.zip module.prop META-INF/ zygisk/
+          cd $GITHUB_WORKSPACE
+          ls -lh lionesp_zygisk.zip
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: apk-debug
           path: app/build/outputs/apk/debug/*.apk
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lionesp-zygisk
+          path: lionesp_zygisk.zip

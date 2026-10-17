@@ -1,0 +1,6 @@
+id=lionesp_zygisk
+name=LionESP Zygisk Injector
+version=1.0
+versionCode=1
+author=GoldenxHUb
+description=Inject libmain.so into Free Fire via Zygisk API
