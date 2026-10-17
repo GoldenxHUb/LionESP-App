@@ -243,10 +243,10 @@ public class MainActivity extends Activity {
 
     public static void moveFile(String sourcePath, String destPath) {
         copyFile(sourcePath, destPath);
-        deleteFile(sourcePath);
+        deleteFileAt(sourcePath);
     }
 
-    public static void deleteFile(String path) {
+    public static void deleteFileAt(String path) {
         File file = new File(path);
 
         if (!file.exists()) return;
@@ -261,7 +261,7 @@ public class MainActivity extends Activity {
         if (fileArr != null) {
             for (File subFile : fileArr) {
                 if (subFile.isDirectory()) {
-                    deleteFile(subFile.getAbsolutePath());
+                    deleteFileAt(subFile.getAbsolutePath());
                 }
 
                 if (subFile.isFile()) {
