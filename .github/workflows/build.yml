@@ -38,8 +38,8 @@ jobs:
           $NDK/ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=Android.mk NDK_APPLICATION_MK=Application.mk
           
           echo "=== Copy libzygisk.so ==="
-          cp libs/arm64-v8a/libzygisk.so zygisk/arm64-v8a/zygisk.so
-          cp libs/armeabi-v7a/libzygisk.so zygisk/armeabi-v7a/zygisk.so
+          cp libs/arm64-v8a/libzygisk.so zygisk/arm64-v8a.so
+          cp libs/armeabi-v7a/libzygisk.so zygisk/armeabi-v7a.so
           rm -rf libs obj
           
           echo "=== Extract libmain.so from APK ==="
