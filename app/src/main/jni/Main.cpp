@@ -19,7 +19,7 @@
 #include "Chams.h"
 #include "Struct/Moco.h"
 #include "exptime.h"
-#include "imGui/stb_image.h"
+#include "imgui/stb_image.h"
 
 // ZYGISK CONFIG
 void (*OpenURL)(String *url);
