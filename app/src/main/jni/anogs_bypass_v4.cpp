@@ -694,6 +694,3 @@ static void anogs_bypass_ctor() {
 // SECTION 12 — JNI_OnLoad
 // ============================================================================
 
-extern "C" JNIEXPORT jint JNI_OnLoad(JavaVM* /*vm*/, void* /*reserved*/) {
-    return JNI_VERSION_1_6;
-}
