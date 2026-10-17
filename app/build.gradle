@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace 'com.android.support'
+    namespace 'com.goldenx.lionesp'
     compileSdk 34
     ndkVersion "25.2.9519653"
 
     defaultConfig {
-        applicationId "com.android.support"
+        applicationId "com.goldenx.lionesp"
         minSdk 21
         targetSdk 34
         versionCode 1
